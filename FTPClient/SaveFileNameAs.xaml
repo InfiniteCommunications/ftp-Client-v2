@@ -1,0 +1,18 @@
+﻿<Window x:Class="FTPClient.SaveFileNameAs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FTPClient"
+        mc:Ignorable="d"
+        Title="SaveFileNameAs" Height="450" Width="800">
+    <Grid Margin="0,0,0.4,5.2">
+        <Label Content="Enter recorded audio information." HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic"/>
+        <Label Content="Title : " HorizontalAlignment="Left" Margin="29,52,0,0" VerticalAlignment="Top"/>
+        <Label Content="Description :" HorizontalAlignment="Left" Margin="32,93,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="titleName" HorizontalAlignment="Left" Height="23" Margin="163,56,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="248"/>
+        <TextBox x:Name="descInfo" HorizontalAlignment="Left" Height="70" Margin="163,105,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="248"/>
+        <Button x:Name="saveInfo" Content="Submit" HorizontalAlignment="Left" Margin="336,201,0,0" VerticalAlignment="Top" Width="75" Click="submitInfo"/>
+
+    </Grid>
+</Window>

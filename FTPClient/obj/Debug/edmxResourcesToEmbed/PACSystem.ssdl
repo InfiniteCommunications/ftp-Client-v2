@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PACSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="soundInfo">
+    <Key>
+      <PropertyRef Name="_id" />
+    </Key>
+    <Property Name="_id" Type="int" Nullable="false" />
+    <Property Name="soundTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="soundDescription" Type="text" />
+    <Property Name="recordedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreate" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="PACSystemModelStoreContainer">
+    <EntitySet Name="soundInfo" EntityType="Self.soundInfo" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
