@@ -17,8 +17,8 @@ namespace FTPClient
         public int id { get; set; }
         public string dateStart { get; set; }
         public string weekly { get; set; }
-        public System.TimeSpan startTime { get; set; }
-        public System.TimeSpan endTime { get; set; }
+        public string startTime { get; set; }
+        public string endTime { get; set; }
         public string device { get; set; }
         public string voiceFile { get; set; }
         public string zone { get; set; }

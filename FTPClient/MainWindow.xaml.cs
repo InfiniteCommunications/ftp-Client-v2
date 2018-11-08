@@ -31,6 +31,7 @@ namespace FTPClient
         //Datagrid 
         PACSystemEntities _db = new PACSystemEntities();
         public static DataGrid gridData;
+        public static DataGrid dataGridSchedule;
 
         public MainWindow()
         {
@@ -45,6 +46,8 @@ namespace FTPClient
             Loaded -= onLoad;
             recordTable.ItemsSource = _db.soundInfoes.ToList();
             gridData = recordTable;
+            scheduleTable.ItemsSource = _db.playSchedules.ToList();
+            dataGridSchedule = scheduleTable;
         }
 
         #region buttonFunction
@@ -105,7 +108,31 @@ namespace FTPClient
             }
 
         }
+
+        private void deleteScheduleClick(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure to delete the schedule?", "Alert", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                int Id = (scheduleTable.SelectedItem as playSchedule).id;
+                var deleteSchedule = _db.playSchedules.Where(m => m.id == Id).Single();
+                _db.playSchedules.Remove(deleteSchedule);
+                _db.SaveChanges();
+                scheduleTable.ItemsSource = _db.playSchedules.ToList();
+            }
+            else
+            {
+                scheduleTable.ItemsSource = _db.playSchedules.ToList();
+            }
+
+        }
+
+        private void editScheduleClick(object sender, RoutedEventArgs e)
+        {
+
+        }
         #endregion
+
 
     }
 }

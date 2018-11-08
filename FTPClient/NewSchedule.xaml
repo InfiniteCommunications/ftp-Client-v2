@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FTPClient"
         mc:Ignorable="d"
-        Title="NewSchedule" Height="450" Width="800">
-    <Grid>
-        
+        Title="NewSchedule" Height="524.109" Width="800">
+    <Grid Margin="0,0,-0.4,10">
+        <Label Content="Date Start :" HorizontalAlignment="Left" Margin="52,16,0,0" VerticalAlignment="Top"/>
+        <Label Content="Weekly :" HorizontalAlignment="Left" Margin="55,60,0,0" VerticalAlignment="Top"/>
+        <Label Content="Start Time" HorizontalAlignment="Left" Margin="55,102,0,0" VerticalAlignment="Top"/>
+        <Label Content="End Time :" HorizontalAlignment="Left" Margin="56,149,0,0" VerticalAlignment="Top"/>
+        <Label Content="Device :" HorizontalAlignment="Left" Margin="59,193,0,0" VerticalAlignment="Top"/>
+        <Label Content="Zone :" HorizontalAlignment="Left" Margin="60,287,0,0" VerticalAlignment="Top"/>
+        <Label Content="Status :" HorizontalAlignment="Left" Margin="57,390,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="dateStart" HorizontalAlignment="Left" Height="23" Margin="147,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="weekly" HorizontalAlignment="Left" Height="23" Margin="147,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="startTime" HorizontalAlignment="Left" Height="23" Margin="147,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="endTime" HorizontalAlignment="Left" Height="23" Margin="147,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="device" HorizontalAlignment="Left" Height="23" Margin="147,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="408"/>
+        <TextBox x:Name="zone" HorizontalAlignment="Left" Height="75" Margin="148,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="408"/>
+        <TextBox x:Name="status" HorizontalAlignment="Left" Height="23" Margin="148,390,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <Button x:Name="addScheduleBtn" Content="Submit" HorizontalAlignment="Left" Margin="555,418,0,0" VerticalAlignment="Top" Width="75" Click="addScheduleClick"/>
+        <Label Content="Voice File :" HorizontalAlignment="Left" Margin="60,246,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="voiceFile" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="148,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="408"/>
     </Grid>
 </Window>

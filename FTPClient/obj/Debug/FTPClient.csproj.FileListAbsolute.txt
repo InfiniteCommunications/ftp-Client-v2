@@ -54,3 +54,5 @@ C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\obj\Debug\Resources\Ico
 C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\obj\Debug\EditRecord.g.cs
 C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\obj\Debug\FTPClient_Content.g.cs
 C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\obj\Debug\EditRecord.baml
+C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\obj\Debug\NewSchedule.g.cs
+C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\obj\Debug\NewSchedule.baml

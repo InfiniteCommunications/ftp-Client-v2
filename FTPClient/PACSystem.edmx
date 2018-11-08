@@ -9,11 +9,11 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="dateStart" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="weekly" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="startTime" Type="time" Precision="7" Nullable="false" />
-          <Property Name="endTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="startTime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="endTime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="device" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="voiceFile" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="zone" Type="text" Nullable="false" />
@@ -42,11 +42,11 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dateStart" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="weekly" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="startTime" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="endTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="startTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="endTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="device" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="voiceFile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="zone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />

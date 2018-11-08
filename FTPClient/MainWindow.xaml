@@ -93,7 +93,7 @@
                                 <DataGridTemplateColumn>
                                     <DataGridTemplateColumn.HeaderTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="Action"></TextBlock>
+                                            <TextBlock Text="ACTION"></TextBlock>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>
                                     <DataGridTemplateColumn.CellTemplate>
@@ -106,14 +106,14 @@
                                                             </Rectangle.OpacityMask>
                                                         </Rectangle>
                                                     </Button>
-                                                    <Button ToolTip="Edit" x:Name="editData" Style="{DynamicResource MetroCircleButtonStyle}" Margin="40,0,0,0" Height="45" HorizontalAlignment="Left" Width="45" Click="editClick" BorderBrush="#f7f7f7" Foreground="#FF52375A">
+                                                    <Button ToolTip="Edit Voice File Info" x:Name="editData" Style="{DynamicResource MetroCircleButtonStyle}" Margin="40,0,0,0" Height="45" HorizontalAlignment="Left" Width="45" Click="editClick" BorderBrush="#f7f7f7" Foreground="#FF52375A">
                                                     <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                                         <Rectangle.OpacityMask>
                                                             <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_edit}" />
                                                         </Rectangle.OpacityMask>
                                                     </Rectangle>
                                                 </Button>
-                                                <Button ToolTip="Delete" x:Name="deleteData" Style="{DynamicResource MetroCircleButtonStyle}" Margin="80,0,0,0"  Height="45" HorizontalAlignment="Left" Width="45" Click="deleteClick" BorderBrush="#f7f7f7" Foreground="#FF52375A">
+                                                <Button ToolTip="Delete Voice File" x:Name="deleteData" Style="{DynamicResource MetroCircleButtonStyle}" Margin="80,0,0,0"  Height="45" HorizontalAlignment="Left" Width="45" Click="deleteClick" BorderBrush="#f7f7f7" Foreground="#FF52375A">
                                                     <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                                                         <Rectangle.OpacityMask>
                                                             <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_delete}" />
@@ -134,8 +134,50 @@
             </Grid>
         </Grid>
         <Grid x:Name="ScheduleDetail" Grid.Row="1">
-            <Grid Margin="0,2,0,10">
-                
+            <Grid Margin="0,5,0,10">
+
+            <DataGrid x:Name="scheduleTable" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" FontFamily="Century Gothic">
+                <DataGrid.Columns>
+                    <!--<DataGridTextColumn Header="Id" Binding="{Binding _id}" Width="50"></DataGridTextColumn>-->
+                    <DataGridTextColumn Header="Date Start" Binding="{Binding dateStart}" Width="150"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Weekly" Binding="{Binding weekly}" Width="250"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Start Time" Binding="{Binding startTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="End Time" Binding="{Binding endTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Device" Binding="{Binding device}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Voice File" Binding="{Binding voiceFile}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Zone" Binding="{Binding zone}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Status" Binding="{Binding status}"></DataGridTextColumn>
+                    <!--<DataGridTextColumn Header="Date Recorded" Binding="{Binding dateCreate}"></DataGridTextColumn>-->
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="ACTION"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button ToolTip="Edit Schedule" x:Name="editSchedule" Style="{DynamicResource MetroCircleButtonStyle}" Height="45" HorizontalAlignment="Left" Width="45" Click="editScheduleClick" BorderBrush="#f7f7f7" Foreground="#FF52375A">
+                                        <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_edit}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                    </Button>
+                                        <Button ToolTip="Delete Schedule" x:Name="deleteSchedule" Style="{DynamicResource MetroCircleButtonStyle}" Margin="50,0,0,0"  Height="45" HorizontalAlignment="Left" Width="45" Click="deleteScheduleClick" BorderBrush="#f7f7f7" Foreground="#FF52375A">
+                                        <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_delete}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
             </Grid>
         </Grid>
     </Grid>
