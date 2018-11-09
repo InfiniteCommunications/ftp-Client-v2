@@ -21,3 +21,26 @@ C:\Users\Wan Chin\source\repos\FTPClient\FTPClient\obj\Debug\FTPClient.csproj.Co
 C:\Users\Wan Chin\source\repos\FTPClient\FTPClient\obj\Debug\FTPClient.exe
 C:\Users\Wan Chin\source\repos\FTPClient\FTPClient\obj\Debug\FTPClient.pdb
 C:\Users\Wan Chin\source\repos\FTPClient\FTPClient\obj\Debug\FTPClient.csprojAssemblyReference.cache
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\bin\Debug\FTPClient.exe.config
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\bin\Debug\FTPClient.exe
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\bin\Debug\FTPClient.pdb
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\bin\Debug\ControlzEx.dll
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\bin\Debug\MahApps.Metro.dll
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\bin\Debug\ControlzEx.pdb
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\bin\Debug\MahApps.Metro.pdb
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\bin\Debug\MahApps.Metro.xml
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\FTPClient.csprojAssemblyReference.cache
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\MainWindow.g.cs
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\App.g.cs
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\FTPClient_MarkupCompile.cache
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\FTPClient_MarkupCompile.lref
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\App.baml
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\MainWindow.baml
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\FTPClient.g.resources
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\FTPClient.Properties.Resources.resources
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\FTPClient.csproj.GenerateResource.cache
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\FTPClient.csproj.CoreCompileInputs.cache
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\FTPClient.csproj.CopyComplete
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\FTPClient.exe
+C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\FTPClient.pdb
