@@ -4,17 +4,30 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\obj\Debug\
+=======
+C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\obj\Debug\
+>>>>>>> 09c79a0e90c6a17a3c866ebbc6bf053814530d5b
 FTPClient
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Jeremy\Desktop\GitHub\Master\ftp-Client-v2\FTPClient\App.xaml
 11151548125
 
 5-2017746502
 16428991299
 MainWindow.xaml;
+=======
+C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\App.xaml
+7-1431297951
+2-818063434
+13608417262
+22-1238673336
+EditRecord.xaml;MainWindow.xaml;NewSchedule.xaml;ResourceDictionary\TextBoxStyle.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;SaveFileNameAs.xaml;
+>>>>>>> 09c79a0e90c6a17a3c866ebbc6bf053814530d5b
 
 False
 

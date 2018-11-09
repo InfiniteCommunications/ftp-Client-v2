@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PACSystemModelStoreContainer" CdmEntityContainer="PACSystemEntities">
+    <EntitySetMapping Name="playSchedules">
+      <EntityTypeMapping TypeName="PACSystemModel.playSchedule">
+        <MappingFragment StoreEntitySet="playSchedule">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="dateStart" ColumnName="dateStart" />
+          <ScalarProperty Name="weekly" ColumnName="weekly" />
+          <ScalarProperty Name="startTime" ColumnName="startTime" />
+          <ScalarProperty Name="endTime" ColumnName="endTime" />
+          <ScalarProperty Name="device" ColumnName="device" />
+          <ScalarProperty Name="voiceFile" ColumnName="voiceFile" />
+          <ScalarProperty Name="zone" ColumnName="zone" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="soundInfoes">
+      <EntityTypeMapping TypeName="PACSystemModel.soundInfo">
+        <MappingFragment StoreEntitySet="soundInfo">
+          <ScalarProperty Name="C_id" ColumnName="_id" />
+          <ScalarProperty Name="soundTitle" ColumnName="soundTitle" />
+          <ScalarProperty Name="soundDescription" ColumnName="soundDescription" />
+          <ScalarProperty Name="recordedBy" ColumnName="recordedBy" />
+          <ScalarProperty Name="dateCreate" ColumnName="dateCreate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

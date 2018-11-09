@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PACSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="playSchedule">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="dateStart" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="weekly" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="startTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="endTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="device" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="voiceFile" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="zone" Type="text" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="soundInfo">
+    <Key>
+      <PropertyRef Name="_id" />
+    </Key>
+    <Property Name="_id" Type="int" Nullable="false" />
+    <Property Name="soundTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="soundDescription" Type="text" />
+    <Property Name="recordedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreate" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="PACSystemModelStoreContainer">
+    <EntitySet Name="playSchedule" EntityType="Self.playSchedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="soundInfo" EntityType="Self.soundInfo" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

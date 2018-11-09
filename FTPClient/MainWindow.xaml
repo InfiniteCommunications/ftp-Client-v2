@@ -6,29 +6,183 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:FTPClient"
         mc:Ignorable="d"
-        Title="FTP Client" Height="450" Width="800" Loaded="onLoad">
-    <Grid ShowGridLines="True">
+        Title="FTP Client" Height="980.4" Width="1767.61" Loaded="onLoad" Background="#f7f7f7">
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="400"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid x:Name="FTPSound" Grid.Row="0" ShowGridLines="True">
+        <Border BorderThickness="0, 0, 0, 2" BorderBrush="#dbd9d9" Margin="0,0,0,0">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="4" Direction="330" Color="#ececec" Opacity="0.5" BlurRadius="4"/>
+            </Border.Effect>
+        </Border>
+        <Grid x:Name="FTPSound" Grid.Row="0" ShowGridLines="False" Margin="0,0,0,20">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="700"></ColumnDefinition>
+                <ColumnDefinition Width="850"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" ShowGridLines="True">
+
+            <Grid Grid.Column="0" ShowGridLines="False">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" x:Name="record"> 
+                <Grid Grid.Row="0" x:Name="record">
+                    <Canvas x:Name="waveCanvas" HorizontalAlignment="Left" Height="130" 
+                        Margin="40,10,0,0" VerticalAlignment="Top" 
+                        Width="700" Background="#f7f7f7" />
+                    <Button x:Name="startRecord" Content="Start Record" HorizontalAlignment="Left" Margin="96,150,0,0" VerticalAlignment="Top" Width="75" Click="startRecording"/>
+                    <Button x:Name="stopRecord" Content="Stop / Save " HorizontalAlignment="Left" Margin="409,150,0,0" VerticalAlignment="Top" Width="75" Click="stopRecording"/>
                     
                 </Grid>
-                <Grid Grid.Row="1" x:Name="fileUpload"></Grid>
+                <Border BorderThickness="0, 0, 0, 2" BorderBrush="#dbd9d9" Margin="20,0,40,0">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="4" Direction="330" Color="#ececec" Opacity="0.5" BlurRadius="4"/>
+                    </Border.Effect>
+                </Border>
+                <Grid Grid.Row="1" x:Name="fileUpload"  ShowGridLines="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="gridLbl" Grid.Column="0" Grid.Row="0">
+                        <Label FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="25,32,0,0" FontSize="16">File to upload :</Label>
+                    </Grid>
+                    <Grid x:Name="gridBrowse" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
+                        <TextBox x:Name="filePathTxt" IsReadOnly="True" Width="600" Height="50" Padding="5" HorizontalAlignment="Left" BorderBrush="White">
+                            <TextBox.Effect>
+                                <DropShadowEffect ShadowDepth="4" Direction="330" Color="#ececec" Opacity="0.5" BlurRadius="4"/>
+                            </TextBox.Effect>
+                        </TextBox>
+                        <Button x:Name="browseFile" Width="150" Height="45" HorizontalAlignment="Right" Margin="0,0,75,0" Background="#e0cdf8">Browse</Button>
+                    </Grid>
+                    <Grid x:Name="btnGroup" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1">
+                        <Button Width="150" Height="85" HorizontalAlignment="Left" Background="#ffffff" Margin="50,0,0,0">
+                            <Image Width="70" Height="70" Source="/Images/upload.png"></Image>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="4" Direction="330" Color="#ececec" Opacity="0.5" BlurRadius="4"/>
+                            </Button.Effect>
+                        </Button>
+                        <Button Width="150" Height="85" HorizontalAlignment="Left" Background="#ffffff" Margin="250,0,0,0">
+                            <Image Width="70" Height="70" Source="/Images/play.png"></Image>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="4" Direction="330" Color="#ececec" Opacity="0.5" BlurRadius="4"/>
+                            </Button.Effect>
+                        </Button>
+                        <Button Width="150" Height="85" HorizontalAlignment="Left" Background="#ffffff" Margin="450,0,0,0">
+                            <Image Width="70" Height="70" Source="/Images/stop.png"></Image>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="4" Direction="330" Color="#ececec" Opacity="0.5" BlurRadius="4"/>
+                            </Button.Effect>
+                        </Button>
+                    </Grid>
+                </Grid>
             </Grid>
-            <Grid Grid.Column="1"></Grid>
+            <Grid Grid.Column="1" Grid.ColumnSpan="3">
+                <Grid>
+                    <Border Margin="0,10,10,0">
+                        <DataGrid x:Name="recordTable" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" FontFamily="Century Gothic">
+                            <DataGrid.Columns>
+                                <!--<DataGridTextColumn Header="Id" Binding="{Binding _id}" Width="50"></DataGridTextColumn>-->
+                                <DataGridTextColumn Header="Sound Name" Binding="{Binding soundTitle}" Width="150"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Description" Binding="{Binding soundDescription}" Width="250"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Record By" Binding="{Binding recordedBy}"></DataGridTextColumn>
+                                <!--<DataGridTextColumn Header="Date Recorded" Binding="{Binding dateCreate}"></DataGridTextColumn>-->
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="ACTION"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Button ToolTip="Add to schedule" x:Name="addData" Style="{DynamicResource MetroCircleButtonStyle}"  Height="45" HorizontalAlignment="Left" Width="45" Click="addClick" BorderBrush="#f7f7f7" Foreground="#FF52375A">
+                                                        <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_add}" />
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                    </Button>
+                                                    <Button ToolTip="Edit Voice File Info" x:Name="editData" Style="{DynamicResource MetroCircleButtonStyle}" Margin="40,0,0,0" Height="45" HorizontalAlignment="Left" Width="45" Click="editClick" BorderBrush="#f7f7f7" Foreground="#FF52375A">
+                                                    <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                                        <Rectangle.OpacityMask>
+                                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_edit}" />
+                                                        </Rectangle.OpacityMask>
+                                                    </Rectangle>
+                                                </Button>
+                                                <Button ToolTip="Delete Voice File" x:Name="deleteData" Style="{DynamicResource MetroCircleButtonStyle}" Margin="80,0,0,0"  Height="45" HorizontalAlignment="Left" Width="45" Click="deleteClick" BorderBrush="#f7f7f7" Foreground="#FF52375A">
+                                                    <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                                        <Rectangle.OpacityMask>
+                                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_delete}" />
+                                                        </Rectangle.OpacityMask>
+                                                    </Rectangle>
+                                                </Button>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="4" Direction="330" Color="#ececec" Opacity="0.5" BlurRadius="4"/>
+                        </Border.Effect>
+                    </Border>
+                </Grid>
+            </Grid>
         </Grid>
-        <Grid x:Name="ScheduleDetail" Grid.Row="1"></Grid>
+        <Grid x:Name="ScheduleDetail" Grid.Row="1">
+            <Grid Margin="0,5,0,10">
+
+            <DataGrid x:Name="scheduleTable" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" FontFamily="Century Gothic">
+                <DataGrid.Columns>
+                    <!--<DataGridTextColumn Header="Id" Binding="{Binding _id}" Width="50"></DataGridTextColumn>-->
+                    <DataGridTextColumn Header="Date Start" Binding="{Binding dateStart}" Width="150"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Weekly" Binding="{Binding weekly}" Width="250"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Start Time" Binding="{Binding startTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="End Time" Binding="{Binding endTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Device" Binding="{Binding device}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Voice File" Binding="{Binding voiceFile}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Zone" Binding="{Binding zone}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Status" Binding="{Binding status}"></DataGridTextColumn>
+                    <!--<DataGridTextColumn Header="Date Recorded" Binding="{Binding dateCreate}"></DataGridTextColumn>-->
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="ACTION"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button ToolTip="Edit Schedule" x:Name="editSchedule" Style="{DynamicResource MetroCircleButtonStyle}" Height="45" HorizontalAlignment="Left" Width="45" Click="editScheduleClick" BorderBrush="#f7f7f7" Foreground="#FF52375A">
+                                        <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_edit}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                    </Button>
+                                        <Button ToolTip="Delete Schedule" x:Name="deleteSchedule" Style="{DynamicResource MetroCircleButtonStyle}" Margin="50,0,0,0"  Height="45" HorizontalAlignment="Left" Width="45" Click="deleteScheduleClick" BorderBrush="#f7f7f7" Foreground="#FF52375A">
+                                        <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_delete}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            </Grid>
+        </Grid>
     </Grid>
 </Controls:MetroWindow>
