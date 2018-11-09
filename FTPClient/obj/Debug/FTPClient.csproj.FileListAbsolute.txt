@@ -56,3 +56,5 @@ C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\obj\Debug\FTPClient_Con
 C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\obj\Debug\EditRecord.baml
 C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\obj\Debug\NewSchedule.g.cs
 C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\obj\Debug\NewSchedule.baml
+C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\bin\Debug\NAudio.dll
+C:\Users\Wan Chin\Desktop\Github\ftp-Client-v2\FTPClient\bin\Debug\NAudio.xml

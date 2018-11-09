@@ -59,10 +59,10 @@ namespace FTPClient
 
         public void InsertSoundInfo()
         {
-            string queryStr = " INSERT INTO soundInfo (_id, soundTitle, soundDescription, " +
+            string queryStr = " INSERT INTO soundInfo (soundTitle, soundDescription, " +
                               " recordedBy, dateCreate) " +
                               " VALUES('" +
-                    _id + "', '" +
+                   
                     _title + "', '" +
                     _description + "', '" +
                     _recordby + "', '" +

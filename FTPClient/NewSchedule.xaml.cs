@@ -20,7 +20,7 @@ namespace FTPClient
     public partial class NewSchedule : Window
     {
         PACSystemEntities _db = new PACSystemEntities();
-        public NewSchedule( int soundId)
+        public NewSchedule(int soundId)
         {
             InitializeComponent();
             soundInfo selectData = (from s in _db.soundInfoes

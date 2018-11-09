@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,30 @@ namespace FTPClient
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class MainWindow : MetroWindow 
     {
-        [DllImport("winmm.dll", EntryPoint = "mciSendStringA", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
-        private static extern int mciSendString(string lpstrCommand, string lpstrReturnString, int uReturnLength, int hwndCallback);
-        System.Timers.Timer timer1 = new System.Timers.Timer();
         List<System.Windows.Media.MediaPlayer> sounds = new List<System.Windows.Media.MediaPlayer>();
+        WaveIn wi;
+        WaveFileWriter wfw;
+        Polyline pl;
 
+        double canH = 0;
+        double canW = 0;
+        double plH = 0;
+        double plW = 0;
+        //int time = 0;
+        //double seconds = 0;
+
+
+
+        List<byte> totalbytes;
+        Queue<Point> displaypts;
+        //Queue<short> displaysht;
+        Queue<Int32> displaysht;
+
+
+        long count = 0;
+        int numtodisplay = 2205;
 
         //Datagrid 
         PACSystemEntities _db = new PACSystemEntities();
@@ -53,22 +71,28 @@ namespace FTPClient
         #region buttonFunction
         private void startRecording(object sender, RoutedEventArgs e)
         {
-            mciSendString("open new Type waveaudio Alias recsound", "", 0, 0);
-            mciSendString("record recsound", "", 0, 0);
-        }
-
-        private void stopRecording(object sender, RoutedEventArgs e)
-        {
             var dialogSave = new SaveFileNameAs();
             if (dialogSave.ShowDialog() == true)
             {
                 string title = dialogSave._title;
                 string todayDate = DateTime.Now.ToString("yyyyMMdd");
-
-
-                mciSendString("save recsound c:\\Uploaded\\" + todayDate + "_" + title + ".wav", "", 0, 0);
-                mciSendString("close recsound ", "", 0, 0);
+                string saveAsName = "c:\\Uploaded\\"+todayDate+"_"+title+".wav";
+                StartRecording(saveAsName);
             }
+        }
+
+        private void stopRecording(object sender, RoutedEventArgs e)
+        {
+            wi.StopRecording();
+            canH = 0;
+            count = 0;
+            canW = 0;
+            plH = 0;
+            plW = 0;
+
+            this.waveCanvas.Children.Clear();
+            pl.Points.Clear();
+            recordTable.ItemsSource = _db.soundInfoes.ToList();
         }
 
         private void browseFile_Click(object sender, RoutedEventArgs e)
@@ -96,7 +120,7 @@ namespace FTPClient
             MessageBoxResult result = MessageBox.Show("Are you sure to delete the record?", "Alert", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                int Id = (recordTable.SelectedItem as soundInfo).C_id;
+                int Id = (recordTable.SelectedItem as soundInfo).C_id; 
                 var deleteSound = _db.soundInfoes.Where(m => m.C_id == Id).Single();
                 _db.soundInfoes.Remove(deleteSound);
                 _db.SaveChanges();
@@ -133,6 +157,127 @@ namespace FTPClient
         }
         #endregion
 
+        #region recording function
+        void StartRecording(string name)
+        {
+            wi = new WaveIn();
+            wi.DataAvailable += new EventHandler<WaveInEventArgs>(wi_DataAvailable);
+            wi.RecordingStopped += new EventHandler<StoppedEventArgs>(wi_RecordingStopped);
+            wi.WaveFormat = new WaveFormat(44100, 32, 2);
 
+
+            wfw = new WaveFileWriter(name, wi.WaveFormat);
+
+
+            canH = waveCanvas.Height;
+            canW = waveCanvas.Width;
+
+
+            pl = new Polyline();
+            pl.Stroke = Brushes.Blue;
+            pl.Name = "waveform";
+            pl.StrokeThickness = 1;
+            pl.MaxHeight = canH - 4;
+            pl.MaxWidth = canW - 4;
+
+
+            plH = pl.MaxHeight;
+            plW = pl.MaxWidth;
+
+
+           // this.time = time;
+
+
+            displaypts = new Queue<Point>();
+            totalbytes = new List<byte>();
+            displaysht = new Queue<Int32>();
+
+
+            wi.StartRecording();
+        }
+
+        void wi_RecordingStopped(object sender, EventArgs e)
+        {
+            wi.Dispose();
+            wi = null;
+            wfw.Close();
+            wfw.Dispose();
+
+
+            wfw = null;
+        }
+
+
+        void wi_DataAvailable(object sender, WaveInEventArgs e)
+        {
+            //seconds += (double)(1.0 * e.BytesRecorded / wi.WaveFormat.AverageBytesPerSecond * 1.0);
+            //if (seconds > time)
+            //{
+            //    wi.StopRecording();
+
+
+            //    canH = 0;
+            //    count = 0;
+            //    canW = 0;
+            //    plH = 0;
+            //    plW = 0;
+            //    time = 0;
+            //    seconds = 0;
+            //}
+
+
+            wfw.Write(e.Buffer, 0, e.BytesRecorded);
+            totalbytes.AddRange(e.Buffer);
+
+
+            //byte[] shts = new byte[2];
+            byte[] shts = new byte[4];
+
+
+            for (int i = 0; i < e.BytesRecorded - 1; i += 100)
+            {
+                shts[0] = e.Buffer[i];
+                shts[1] = e.Buffer[i + 1];
+                shts[2] = e.Buffer[i + 2];
+                shts[3] = e.Buffer[i + 3];
+                if (count < numtodisplay)
+                {
+                    displaysht.Enqueue(BitConverter.ToInt32(shts, 0));
+                    ++count;
+                }
+                else
+                {
+                    displaysht.Dequeue();
+                    displaysht.Enqueue(BitConverter.ToInt32(shts, 0));
+                }
+            }
+            this.waveCanvas.Children.Clear();
+            pl.Points.Clear();
+            //short[] shts2 = displaysht.ToArray();
+            Int32[] shts2 = displaysht.ToArray();
+            for (Int32 x = 0; x < shts2.Length; ++x)
+            {
+                pl.Points.Add(Normalize(x, shts2[x]));
+            }
+
+
+
+            this.waveCanvas.Children.Add(pl);
+
+
+        }
+
+
+        Point Normalize(Int32 x, Int32 y)
+        {
+            Point p = new Point();
+
+
+            p.X = 1.0 * x / numtodisplay * plW;
+            //p.Y = plH/2.0 - y / (short.MaxValue*1.0) * (plH/2.0);
+            p.Y = plH / 2.0 - y / (Int32.MaxValue * 1.0) * (plH / 2.0);
+            return p;
+        }
+        #endregion
     }
 }

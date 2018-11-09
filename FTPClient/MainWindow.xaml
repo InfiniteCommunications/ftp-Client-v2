@@ -29,8 +29,12 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" x:Name="record">
-                    <Button x:Name="startRecord" Content="Start Record" HorizontalAlignment="Left" Margin="96,68,0,0" VerticalAlignment="Top" Width="75" Click="startRecording"/>
-                    <Button x:Name="stopRecord" Content="Stop / Save " HorizontalAlignment="Left" Margin="409,68,0,0" VerticalAlignment="Top" Width="75" Click="stopRecording"/>
+                    <Canvas x:Name="waveCanvas" HorizontalAlignment="Left" Height="130" 
+                        Margin="40,10,0,0" VerticalAlignment="Top" 
+                        Width="700" Background="#f7f7f7" />
+                    <Button x:Name="startRecord" Content="Start Record" HorizontalAlignment="Left" Margin="96,150,0,0" VerticalAlignment="Top" Width="75" Click="startRecording"/>
+                    <Button x:Name="stopRecord" Content="Stop / Save " HorizontalAlignment="Left" Margin="409,150,0,0" VerticalAlignment="Top" Width="75" Click="stopRecording"/>
+                    
                 </Grid>
                 <Border BorderThickness="0, 0, 0, 2" BorderBrush="#dbd9d9" Margin="20,0,40,0">
                     <Border.Effect>
